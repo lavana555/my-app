@@ -1,0 +1,14 @@
+
+
+div .content img{
+
+    width:780px;
+  }
+
+
+  .content {
+
+    grid-area: c;
+    background-color: lightcoral;
+    }
+

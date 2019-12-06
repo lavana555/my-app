@@ -1,0 +1,16 @@
+.item {
+
+    color:yellow; 
+ }
+
+
+
+.item img{
+
+    width: unset;
+    box-shadow: -5px -1px 15px 15px black;
+
+    width: 300px;
+    height: 300px;
+    border-radius: 50px;
+}
