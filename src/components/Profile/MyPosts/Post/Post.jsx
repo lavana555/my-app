@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import classes from './Post.module.css'
+import { tsPropertySignature } from '@babel/types';
 
-const Post = () => {
+const Post = (props) => {
     return (
 
 
@@ -9,7 +10,8 @@ const Post = () => {
             <img src="https://i.pinimg.com/236x/61/7c/08/617c08db66249363967838302881b351.jpg" alt="" />
             Post1
                     <div>
-                <span>like</span>
+    <span>like {props.liCounts}</span>
+     <span>{props.name}</span>
             </div>
         </div>
 

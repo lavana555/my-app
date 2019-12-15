@@ -3,6 +3,7 @@
 .header {
     grid-area: h ;
     background-color: indigo;
+    width: 1280px;
     }
     
 
