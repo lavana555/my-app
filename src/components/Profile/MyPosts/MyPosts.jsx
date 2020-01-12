@@ -2,26 +2,38 @@ import React, { Component } from 'react';
 import classes from './MyPosts.module.css'
 import Post from './Post/Post';
 
-const MyPosts = () => {
-    return (
+const MyPosts = (props) => {
+  let NewApddPost = React.createRef()
+  let taskmessageEls = props.messageEls.map(messageEl => <Post message={messageEl.message} liCounts={messageEl.liCounts} />)
+  let addPost = () => {
+
+    //let newText = NewApddPost.current.value
+    //  console.dir(newText)
+    props.AddPost();
+  //  props.PostChange('')
+  }
+
+
+  let onPostChange = () => {
+    props.PostChange(NewApddPost.current.value)
+ //   NewApddPost.current.value = '';
+  }
+  return (
+    <div className={classes.postsBlock}>
+      <h3> my posts</h3>
+      <div >
         <div>
-            my posts
-        <div >
-                <textarea></textarea>
-                <button>Add post</button>
+          <textarea ref={NewApddPost} onChange={onPostChange} value={props.APPstate.newPostText}></textarea>
         </div>
-        <div className={classes.posts}>
-          <Post  name="dima" liCounts='5' />
-          <Post  name="nikita" liCounts='55' />
-          <Post  name="liza" liCounts='555'/>
+        <div>
+          <button onClick={addPost}>Add post</button>
         </div>
-           </div> 
+      </div>
+      <div className={classes.posts}>
+        {taskmessageEls}
+      </div>
+    </div>
 
-
-
-    )
-
+  )
 }
-
-
 export default MyPosts;

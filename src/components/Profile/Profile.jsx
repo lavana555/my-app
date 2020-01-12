@@ -1,18 +1,30 @@
 import React, { Component } from 'react';
 import classes from './Profile.module.css'
 import MyPosts from './MyPosts/MyPosts';
+import ProfileInfo from './ProfileInfo/ProfileInfo';
 
-const Profile = () => {
-    return (<div className={classes.content}>
+
+// let messageEls = [ 
+//     { message: "hi did you want", liCounts: '5', id: 1 },
+//     { message: "what are you doin now", liCounts: '55', id: 2 }
+//   ]
+
+
+const Profile = (props) => {
+
+
+
+
+    return (<div>
         <div className={classes.contimg}>
-            <img src='https://www.hakaimagazine.com/wp-content/uploads/header-baltic-sea-radiation.jpg' />
+            <ProfileInfo />
         </div>
-        <div>
-            ava+description
-        </div>
-       <MyPosts />
-           </div>
-    
+        <MyPosts messageEls={props.messageEls}
+            APPstate={props.APPstate}
+            PostChange={props.PostChange}
+            AddPost={props.AddPost} />
+    </div>
+
 
 
     )

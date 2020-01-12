@@ -1,11 +1,23 @@
 .nav {
     grid-area: n;
     background-color: green;
+    padding: 20px;
     
     }
 
-   .item {
+   .item a {
 
     color: lightgray;
+    text-decoration: none;
    } 
 
+   .item a.activeLink {
+
+color: gold;
+
+   }
+
+   .friendbar {
+   display: flex;
+   flex-direction: row;
+   }

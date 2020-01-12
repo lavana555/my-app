@@ -11,7 +11,7 @@ const Post = (props) => {
             Post1
                     <div>
     <span>like {props.liCounts}</span>
-     <span>{props.name}</span>
+     <span>{props.message}</span>
             </div>
         </div>
 

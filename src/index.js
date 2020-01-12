@@ -3,10 +3,18 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
+import state, { subscribe } from './redux/state';
+import {AddPost, PostChange, addMessage, MessageChange} from './redux/state';
+//import { reRender } from './render';
 
-ReactDOM.render(<App />, document.getElementById('root'));
+ let reRender=(state)=>{
 
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: https://bit.ly/CRA-PWA
+    ReactDOM.render(<App APPstate={state}  AddPost={AddPost}  
+         PostChange={PostChange} 
+         addMessage={addMessage}
+         MessageChange={MessageChange}
+         />, document.getElementById('root'));
+    }
+     reRender(state)
+     subscribe(reRender)
 serviceWorker.unregister();
