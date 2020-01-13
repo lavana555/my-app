@@ -1,5 +1,9 @@
 .item {
+<<<<<<< HEAD
     height: 100px;
+=======
+
+>>>>>>> ea8fe3532ddd7b36e8bcee1047a16417e7a155d8
     color:yellow; 
  }
 
@@ -7,10 +11,18 @@
 
 .item img{
 
+<<<<<<< HEAD
     /* width: unset; */
     box-shadow: -5px -1px 15px 15px black;
 
     width: 30px;
     height: 30px;
+=======
+    width: unset;
+    box-shadow: -5px -1px 15px 15px black;
+
+    width: 300px;
+    height: 300px;
+>>>>>>> ea8fe3532ddd7b36e8bcee1047a16417e7a155d8
     border-radius: 50px;
 }

@@ -1,4 +1,5 @@
 
+<<<<<<< HEAD
 img {
 
   width:80%;
@@ -12,4 +13,18 @@ img {
 
 
   
+=======
+
+div .content img{
+
+    width:780px;
+  }
+
+
+  .content {
+
+    grid-area: c;
+    background-color: lightcoral;
+    }
+>>>>>>> ea8fe3532ddd7b36e8bcee1047a16417e7a155d8
 

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import classes from './MyPosts.module.css'
 import Post from './Post/Post';
+<<<<<<< HEAD
 import { actionPostAdd, actionPOstChange } from '../../../redux/profilePage-reduce';
 
 
@@ -40,4 +41,29 @@ const MyPosts = (props) => {
 
   )
 }
+=======
+
+const MyPosts = () => {
+    return (
+        <div>
+            my posts
+        <div >
+                <textarea></textarea>
+                <button>Add post</button>
+        </div>
+        <div className={classes.posts}>
+          <Post />
+          <Post />
+          <Post />
+        </div>
+           </div> 
+
+
+
+    )
+
+}
+
+
+>>>>>>> ea8fe3532ddd7b36e8bcee1047a16417e7a155d8
 export default MyPosts;

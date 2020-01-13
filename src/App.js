@@ -3,6 +3,7 @@ import './App.css';
 import Header from './components/Header/Header';
 import Navbar from './components/Navbar/Navbar';
 import Profile from './components/Profile/Profile';
+<<<<<<< HEAD
 import Dialogs from './components/Dialogs/Dialogs';
 import Friends from './components/Friends/Friends';
 import { Route, BrowserRouter } from 'react-router-dom';
@@ -52,11 +53,27 @@ const App = (props) => {
         </div>
       </div>
     </BrowserRouter>
+=======
+
+
+
+const App = () => {
+  return (
+    <div className='app-wrapper'>
+     <Header />
+      <Navbar />    
+      <Profile />
+    </div>
+>>>>>>> ea8fe3532ddd7b36e8bcee1047a16417e7a155d8
   );
 }
 
 
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> ea8fe3532ddd7b36e8bcee1047a16417e7a155d8
 export default App;
 
 
