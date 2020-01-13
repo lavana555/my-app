@@ -3,6 +3,8 @@ import classes from './Dialogs.module.css'
 import { NavLink } from 'react-router-dom';
  import DialogItem from './DialogItem';
  import Message from './Message';
+import { actionAddMessage, actionMessageChange } from '../../redux/messagesPage-reduce';
+
 
 
 const Dialogs = (props) => {
@@ -10,14 +12,12 @@ const Dialogs = (props) => {
     let taskmessageElements =props.messageElements.map(messageElement => <Message message={messageElement.message} />)
     let NewMessage=React.createRef();
    let onaddMessage=()=>{
-     //let  newAddMessage=NewMessage.current.value
-        //props.addMessage(newAddMessage)
-        props.addMessage()
+        props.dispatch(actionAddMessage())
     }
 
 let onMessageChange=()=>{
     let  newChangeMessage=NewMessage.current.value
-    props.MessageChange(newChangeMessage)
+    props.dispatch(actionMessageChange(newChangeMessage))
 }
 
     return (
@@ -28,13 +28,14 @@ let onMessageChange=()=>{
             </div>
             <div className={classes.Messages}>
                 {taskmessageElements}
-            </div>
-            <textarea ref={NewMessage}  
-            value={props.APPstate.newMessageText}
+                <textarea ref={NewMessage}  
+            value={props.APPstate.profilePage.newMessageText}
             onChange={onMessageChange}
             >
             </textarea>
             <button onClick={onaddMessage}>Add</button>
+            </div>
+           
         </div>
 
 

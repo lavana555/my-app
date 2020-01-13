@@ -26,19 +26,18 @@ const App = (props) => {
 
         <div className='app-wrapper-content'>
           {/* <Route  path="/Dialogs" component={Dialogs} /> */}
-          <Route path="/Profile" render={() => <Profile APPstate={props.APPstate}
+          <Route path="/Profile" render={() => <Profile 
+            APPstate={props.APPstate}
             messageEls={props.APPstate.messagesPage.messageEls}
-            AddPost={props.AddPost}
-            PostChange={props.PostChange}
+            dispatch={props.dispatch}
           />} />
 
           <Route path="/Dialogs" render={() => < Dialogs
             dialogElements={props.APPstate.profilePage.dialogElements}
-            messageElements={props.APPstate.profilePage.messageElements} 
-            addMessage={props.addMessage}
-            MessageChange={props.MessageChange} 
+            messageElements={props.APPstate.profilePage.messageElements}
             APPstate={props.APPstate}
-            />}  />
+            dispatch={props.dispatch}
+          />} />
 
           <Route path="/Friends" render={() => < Friends
             friendsElements={props.APPstate.sitebar} />} />

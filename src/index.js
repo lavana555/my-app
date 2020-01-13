@@ -3,18 +3,18 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
-import state, { subscribe } from './redux/state';
-import {AddPost, PostChange, addMessage, MessageChange} from './redux/state';
-//import { reRender } from './render';
+import state from './redux/store';
+import store, {AddPost, PostChange, addMessage, MessageChange} from './redux/store';
+
 
  let reRender=(state)=>{
 
-    ReactDOM.render(<App APPstate={state}  AddPost={AddPost}  
-         PostChange={PostChange} 
-         addMessage={addMessage}
-         MessageChange={MessageChange}
+    ReactDOM.render(<App APPstate={store.getState()} 
+          
+          dispatch={store.dispatch.bind(store)}
+         
          />, document.getElementById('root'));
     }
-     reRender(state)
-     subscribe(reRender)
+     reRender(store.getState())
+     store.subscribe(reRender)
 serviceWorker.unregister();

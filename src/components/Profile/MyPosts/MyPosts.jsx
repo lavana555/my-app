@@ -1,29 +1,33 @@
 import React, { Component } from 'react';
 import classes from './MyPosts.module.css'
 import Post from './Post/Post';
+import { actionPostAdd, actionPOstChange } from '../../../redux/profilePage-reduce';
+
+
 
 const MyPosts = (props) => {
   let NewApddPost = React.createRef()
   let taskmessageEls = props.messageEls.map(messageEl => <Post message={messageEl.message} liCounts={messageEl.liCounts} />)
   let addPost = () => {
 
-    //let newText = NewApddPost.current.value
-    //  console.dir(newText)
-    props.AddPost();
-  //  props.PostChange('')
+  
+    props.dispatch(actionPostAdd());
+ 
   }
 
 
   let onPostChange = () => {
-    props.PostChange(NewApddPost.current.value)
- //   NewApddPost.current.value = '';
+ let  NewText=NewApddPost.current.value
+
+ props.dispatch(actionPOstChange(NewText))
+ 
   }
   return (
     <div className={classes.postsBlock}>
       <h3> my posts</h3>
       <div >
         <div>
-          <textarea ref={NewApddPost} onChange={onPostChange} value={props.APPstate.newPostText}></textarea>
+          <textarea ref={NewApddPost} onChange={onPostChange} value={props.APPstate.messagesPage.newPostText}></textarea>
         </div>
         <div>
           <button onClick={addPost}>Add post</button>
