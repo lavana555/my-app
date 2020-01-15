@@ -6,7 +6,7 @@ import SiteBarReduce from "./sitebar-reduce";
 
 let store = {
   _state: {
-    profilePage: {
+    messagesPage: {
       dialogElements: [
         { name: "niki", id: 1 },
         { name: "liza", id: 2 },
@@ -21,7 +21,7 @@ let store = {
       ],
       newMessageText: "введите ваше сооsasssбщение"
     },
-    messagesPage: {
+    profilePage: {
       messageEls: [
         { message: "hi did you want", liCounts: '5', id: 1 },
         { message: "what are you doin now", liCounts: '55', id: 2 }
@@ -29,12 +29,13 @@ let store = {
       newPostText: "itkamasutra"
 
     },
+    sitebarPage:{
     sitebar: [
       { name: "NikiS", id: 1 },
       { name: "LizaS", id: 2 },
       { name: "ViktorS", id: 3 }
-
     ]
+  }
   },
   _callSubscribber() {
     console.log('state')
@@ -51,10 +52,10 @@ let store = {
 
 
   dispatch(action) {
-    debugger;
-    ProfilePageReduce(this._state.messagesPage, action)
-    MessagesPageReduce(this._state.profilePage, action)
-    SiteBarReduce(this._state.sitebar, action)
+   // debugger;
+   this._state.profilePage=ProfilePageReduce(this._state.profilePage, action)
+    this._state.messagesPage=MessagesPageReduce(this._state.messagesPage, action)
+    this._state.sitebarPage=SiteBarReduce(this._state.sitebarPage, action)
     this._callSubscribber(this._state);
 
   }

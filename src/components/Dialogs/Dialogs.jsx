@@ -8,6 +8,7 @@ import { actionAddMessage, actionMessageChange } from '../../redux/messagesPage-
 
 
 const Dialogs = (props) => {
+  //  debugger;
     let taskdialogElements = props.dialogElements.map(dialogElement => <DialogItem name={dialogElement.name} id={dialogElement.id} />)
     let taskmessageElements =props.messageElements.map(messageElement => <Message message={messageElement.message} />)
     let NewMessage=React.createRef();
@@ -29,7 +30,7 @@ let onMessageChange=()=>{
             <div className={classes.Messages}>
                 {taskmessageElements}
                 <textarea ref={NewMessage}  
-            value={props.APPstate.profilePage.newMessageText}
+            value={props.APPstate.messagesPage.newMessageText}
             onChange={onMessageChange}
             >
             </textarea>

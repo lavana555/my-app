@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import classes from './Navbar.module.css';
-<<<<<<< HEAD
 import { NavLink } from 'react-router-dom';
 import Friend from './..//Friends/Friend';
 
@@ -8,6 +7,7 @@ import Friend from './..//Friends/Friend';
 
 const Navbar = (props) => {
     //  let taskmessageEls = props.sitebar.map(st => <Friends name={st.name} liCounts={st.id} />)
+    //debugger;
     let tasksitebars = props.sitebar.map(t => <Friend name={t.name} />)
     return (
         <nav className={classes.nav}>
@@ -36,29 +36,6 @@ const Navbar = (props) => {
               </div>
 
         </nav>
-=======
-
-
-const Navbar = () => {
-    return (<nav className={classes.nav}>
-        
-        <div className={classes.item}>
-            <a> Profile</a>
-        </div>
-        <div className={classes.item}>
-            <a>Message</a>
-        </div>
-        <div className={classes.item}>
-            <a>news</a>
-        </div>
-        <div className={classes.item}>
-            <a>Music</a>
-        </div>
-        <div className={classes.item}>
-            <a>Settings</a>
-        </div>
-    </nav>
->>>>>>> ea8fe3532ddd7b36e8bcee1047a16417e7a155d8
 
 
     )

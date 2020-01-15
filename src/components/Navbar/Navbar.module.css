@@ -1,7 +1,6 @@
 .nav {
     grid-area: n;
     background-color: green;
-<<<<<<< HEAD
     padding: 20px;
     
     }
@@ -22,13 +21,3 @@ color: gold;
    display: flex;
    flex-direction: row;
    }
-=======
-    
-    }
-
-   .item {
-
-    color: lightgray;
-   } 
-
->>>>>>> ea8fe3532ddd7b36e8bcee1047a16417e7a155d8
