@@ -11,7 +11,7 @@ let initState={
     { message: "hi did you want", liCounts: '5', id: 1 },
     { message: "what are you doin now", liCounts: '55', id: 2 }
   ],
-  newPostText: ""
+  newPostText: "it kamasutra"
 }
 
 export const ProfilePageReduce=(state=initState,action)=>{

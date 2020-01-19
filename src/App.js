@@ -9,6 +9,7 @@ import { Route, BrowserRouter } from 'react-router-dom';
 import News from './components/News/News';
 import Music from './components/Music/Music';
 import Settings from './components/Settings/Settings';
+import DialogsContainer from './components/Dialogs/DialogsContainer';
 // import classes from '*.module.css';
 
 
@@ -26,18 +27,18 @@ const App = (props) => {
 
 
         <div className='app-wrapper-content'>
-          {/* <Route  path="/Dialogs" component={Dialogs} /> */}
           <Route path="/Profile" render={() => <Profile 
-            state={props.state}
-            messageEls={props.state.profilePage.messageEls}
-            dispatch={props.dispatch}
+             store={props.store}
           />} />
 
-          <Route path="/Dialogs" render={() => < Dialogs
-            dialogElements={props.state.messagesPage.dialogElements}
-            messageElements={props.state.messagesPage.messageElements}
-            APPstate={props.state}
-            dispatch={props.dispatch}
+          <Route path="/Dialogs" render={() => < DialogsContainer
+
+        store={props.store}
+
+            // dialogElements={props.state.messagesPage.dialogElements}
+            // messageElements={props.state.messagesPage.messageElements}
+            // APPstate={props.state}
+            // dispatch={props.dispatch}
           />} />
 
           <Route path="/Friends" render={() => < Friends
