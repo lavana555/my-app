@@ -27,6 +27,7 @@ const App = (props) => {
            <Route path="/Profile" render={() => <Profile  />} />
           <Route path="/Dialogs" render={() => < DialogsContainer  />} />
           <Route path="/Friends" render={() => < Friends friendsElements={props.state.sitebarPage.sitebar} />} />
+          
           </div>
       </div>
   

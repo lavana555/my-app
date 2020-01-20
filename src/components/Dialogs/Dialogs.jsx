@@ -12,8 +12,8 @@ const Dialogs = (props) => {
 
    // let state=props.store.getState()
   //  debugger;
-    let taskdialogElements = props.state.dialogElements.map(dialogElement => <DialogItem name={dialogElement.name} id={dialogElement.id} />)
-    let taskmessageElements =props.state.messageElements.map(messageElement => <Message message={messageElement.message} />)
+    let taskdialogElements = props.messagesPage.dialogElements.map(dialogElement => <DialogItem name={dialogElement.name} id={dialogElement.id} />)
+    let taskmessageElements =props.messagesPage.messageElements.map(messageElement => <Message message={messageElement.message} />)
     let NewMessage=React.createRef();
    let onaddMessage=()=>{
         props.addMessage()
@@ -33,7 +33,7 @@ let onMessageChange=()=>{
             <div className={classes.Messages}>
                 {taskmessageElements}
                 <textarea ref={NewMessage}  
-            value={props.state.newMessageText}
+            value={props.messagesPage.newMessageText}
             onChange={onMessageChange}
             >
             </textarea>
