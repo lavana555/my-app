@@ -6,16 +6,13 @@ import MyPostsContainer from './MyPosts/MyPostsContainer';
 
 
 const Profile = (props) => {
-debugger;
+//debugger;
    return (<div>
         <div className={classes.contimg}>
             <ProfileInfo />
         </div>
-        <MyPostsContainer 
-       
-             store={props.store}
-           
-            />
+        {/* <MyPostsContainer  store={props.store} /> */}
+        <MyPostsContainer />
     </div>
 
 

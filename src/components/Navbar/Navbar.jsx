@@ -8,7 +8,10 @@ import Friend from './..//Friends/Friend';
 const Navbar = (props) => {
     //  let taskmessageEls = props.sitebar.map(st => <Friends name={st.name} liCounts={st.id} />)
     //debugger;
-    let tasksitebars = props.sitebar.map(t => <Friend name={t.name} />)
+
+    /// подключил сторе контекст и отключил передачу ъльентов в навбар
+  //  let state=props.store.getState().sitebarPage
+ //   let tasksitebars = state.sitebar.map(t => <Friend name={t.name} />)
     return (
         <nav className={classes.nav}>
 
@@ -31,7 +34,7 @@ const Navbar = (props) => {
             <div className={classes.item}>
                 <NavLink to="Friends" activeClassName={classes.activeLink}>Friends</NavLink>
                 <div className={classes.friendbar}>
-                {tasksitebars}
+                {/* {tasksitebars} */}
                 </div>
               </div>
 

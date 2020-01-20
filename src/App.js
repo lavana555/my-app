@@ -10,50 +10,26 @@ import News from './components/News/News';
 import Music from './components/Music/Music';
 import Settings from './components/Settings/Settings';
 import DialogsContainer from './components/Dialogs/DialogsContainer';
-// import classes from '*.module.css';
-
-
 
 
 
 
 const App = (props) => {
-  //debugger;
-  return (
-    // <BrowserRouter>
-      <div className='app-wrapper'>
+    return (
+         <div className='app-wrapper'>
         <Header />
-        <Navbar sitebar={props.state.sitebarPage.sitebar} />
-
-
-        <div className='app-wrapper-content'>
-          <Route path="/Profile" render={() => <Profile 
-             store={props.store}
-          />} />
-
-          <Route path="/Dialogs" render={() => < DialogsContainer
-
-        store={props.store}
-
-            // dialogElements={props.state.messagesPage.dialogElements}
-            // messageElements={props.state.messagesPage.messageElements}
-            // APPstate={props.state}
-            // dispatch={props.dispatch}
-          />} />
-
-          <Route path="/Friends" render={() => < Friends
-            friendsElements={props.state.sitebarPage.sitebar} />} />
-
-          {/* <Route   path="/News" component={News}/>
-        <Route   path="/Music" component={Music}/>
-        <Route   path="/Settings" component={Settings}/> */}
-          {/* <Route   path="/Friends" render={()=>Friends}/> */}
-
-
-
-        </div>
+        {/* <Navbar sitebar={props.state.sitebarPage.sitebar} /> */}
+        {/* <Navbar store={props.store} /> */}
+        <Navbar  />
+       <div className='app-wrapper-content'>
+          {/* <Route path="/Profile" render={() => <Profile  store={props.store}/>} />
+          <Route path="/Dialogs" render={() => < DialogsContainer store={props.store} />} /> */}
+           <Route path="/Profile" render={() => <Profile  />} />
+          <Route path="/Dialogs" render={() => < DialogsContainer  />} />
+          <Route path="/Friends" render={() => < Friends friendsElements={props.state.sitebarPage.sitebar} />} />
+          </div>
       </div>
-    // </BrowserRouter>
+  
   );
 }
 
