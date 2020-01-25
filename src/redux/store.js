@@ -6,6 +6,26 @@ import SiteBarReduce from "./sitebar-reduce";
 
 let store = {
   _state: {
+
+
+
+
+    usersPage:{
+    
+  users:[
+       {fullName: "niki", followed:false, id: 1,status: "learn javascript",location:{contry:'usa', city: "florida"} },
+       {fullName: "sasha", followed:true, id: 2,status: "learn html",location:{contry:'russia', city: "omsk"} },
+       {fullName: "viktor", followed:false, id: 3,status: "learn css",location:{contry:'poland', city: "warsawa"} },
+       {fullName: "leash", followed:true, id: 4,status: "learn redux",location:{contry:'ukrain', city: "kiev"} },
+       {fullName: "sash", followed:false, id: 5,status: "learn angulat",location:{contry:'litva', city: "vilnus"} },
+     
+  ]
+}
+    },
+
+
+
+
     messagesPage: {
       dialogElements: [
         { name: "niki", id: 1 },

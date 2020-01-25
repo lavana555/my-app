@@ -9,7 +9,7 @@ import { BrowserRouter } from 'react-router-dom';
 import  { Provider } from 'react-redux';
 
 
- let reRender=(state)=>{
+//  let reRender=(state)=>{
 
     ReactDOM.render(
 <BrowserRouter>
@@ -18,11 +18,11 @@ import  { Provider } from 'react-redux';
          {/* <App state={state} dispatch={store.dispatch.bind(store)} store={store}/> */}
          </Provider>
          </BrowserRouter>, document.getElementById('root'));
-    }
-     reRender(store.getState())
-     store.subscribe(()=>{
+   // }
+     // reRender(store.getState())
+     // store.subscribe(()=>{
          
-          let state=store.getState()
-            reRender(state)
-     })
+     //      let state=store.getState()
+     //        reRender(state)
+     // })
 serviceWorker.unregister();

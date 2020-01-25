@@ -23,8 +23,16 @@ let initSate={
 }
 
 export const MessagesPageReduce=(state=initSate,action)=>{
+ // debugger;
+  // let copyState={...state};
+  //  copyState.messageElements=[...state.messageElements];
+  //  copyState.
+   
+//  let copyState={
+//     ...state,
+//     messageElements:[...state.messageElements]
 
-
+//  }
    switch (action.type) {
      case ADDMESSAGE:
     let newMessagePost ={
@@ -58,9 +66,6 @@ export const MessagesPageReduce=(state=initSate,action)=>{
   //   default:
   //     return state
   // }
-
-
-
 
 
 

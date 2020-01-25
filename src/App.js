@@ -10,6 +10,7 @@ import News from './components/News/News';
 import Music from './components/Music/Music';
 import Settings from './components/Settings/Settings';
 import DialogsContainer from './components/Dialogs/DialogsContainer';
+import UsersContainer from './components/Users/UsersContainer';
 
 
 
@@ -25,6 +26,7 @@ const App = (props) => {
           {/* <Route path="/Profile" render={() => <Profile  store={props.store}/>} />
           <Route path="/Dialogs" render={() => < DialogsContainer store={props.store} />} /> */}
            <Route path="/Profile" render={() => <Profile  />} />
+           <Route path="/Users" render={() =><UsersContainer/>} />
           <Route path="/Dialogs" render={() => < DialogsContainer  />} />
           <Route path="/Friends" render={() => < Friends friendsElements={props.state.sitebarPage.sitebar} />} />
           
