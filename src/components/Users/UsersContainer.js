@@ -17,7 +17,7 @@ class UsersContainer extends React.Component {
 
     componentDidMount() {
         this.props.setIsToggle(true)
-        axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${this.props.currentPage}&count=${this.props.pageSize}`).then(response => {
+        axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${this.props.currentPage}&count=${this.props.pageSize}`,{withCredentials:true}).then(response => {
             this.props.setIsToggle(false)
             this.props.setusers(response.data.items)
             this.props.setTotalUsersCount(response.data.totalCount)
@@ -27,7 +27,7 @@ class UsersContainer extends React.Component {
     onPageChged = (p) => {
         this.props.setIsToggle(true)
         this.props.pageChange(p)
-        axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${p}&count=${this.props.pageSize}`).then(response => {
+        axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${p}&count=${this.props.pageSize}`,{withCredentials:true}).then(response => {
             this.props.setIsToggle(false)
             this.props.setusers(response.data.items)
         })

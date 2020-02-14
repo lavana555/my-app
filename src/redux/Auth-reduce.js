@@ -23,7 +23,7 @@ let initState = {
 export const AuthReduce = (state = initState, action) => {
     switch (action.type) {
         case SET_USER_DATA:
-           debugger;
+         //  debugger;
              return {
                  ...state,
                  ...action.data,
