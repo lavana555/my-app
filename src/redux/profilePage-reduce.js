@@ -1,17 +1,20 @@
 const ADDPOST='ADD-POST';
 const CHANGEPOST='NEW-POST-CHANGE'
+const SETUSERPROFILE='SET_USER'
 
 
 
 export const actionPostAdd=()=>({type:ADDPOST })
 export const actionPOstChange=(NewText)=>({type: CHANGEPOST, newpostschange:NewText})
+export const setUserProfile=(profile)=>({type:SETUSERPROFILE,profile})
 
 let initState={
   messageEls: [
     { message: "hi did you want", liCounts: '5', id: 1 },
     { message: "what are you doin now", liCounts: '55', id: 2 }
   ],
-  newPostText: "it kamasutra"
+  newPostText: "it kamasutra",
+    profile:null
 }
 
 export const ProfilePageReduce=(state=initState,action)=>{
@@ -33,6 +36,10 @@ export const ProfilePageReduce=(state=initState,action)=>{
    return {
      ...state, newPostText: action.newpostschange
    }
+     case   SETUSERPROFILE:
+         return {
+             ...state, profile: action.profile
+         }
   default:
     return state
 }

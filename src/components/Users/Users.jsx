@@ -1,39 +1,30 @@
-import React, { Component } from 'react';
-// import classes from './Users.module.css'
-import { tsPropertySignature } from '@babel/types';
-import classes from './Users.module.css'
-import * as axios from 'axios';
+import React, {Component} from 'react';
+import classes from './Users.module.css';
 import Userphoto from './../../assets/images/User.png'
+import {NavLink} from "react-router-dom";
 
 const Users = (props) => {
-let getUsers=()=>{
 
-
-    if (props.users.length === 0) {
-        
-        axios.get("https://social-network.samuraijs.com/api/1.0/users").then(response=>{
-           // debugger;
-            props.setusers(response.data.items)
-        })
-        // props.setusers([
-        //     { fullName: "niki", photo: "https://i.pinimg.com/564x/05/4f/e7/054fe717b6a9fe3907cce07956e4e5d8.jpg", followed: false, id: 1, status: "learn javascript", location: { contry: 'usa', city: "florida" } },
-        //     { fullName: "sasha", photo: "https://i.pinimg.com/564x/05/4f/e7/054fe717b6a9fe3907cce07956e4e5d8.jpg", followed: true, id: 2, status: "learn html", location: { contry: 'russia', city: "omsk" } },
-        //     { fullName: "viktor", photo: "https://i.pinimg.com/564x/05/4f/e7/054fe717b6a9fe3907cce07956e4e5d8.jpg", followed: false, id: 3, status: "learn css", location: { contry: 'poland', city: "warsawa" } },
-        //     { fullName: "leash", photo: "https://i.pinimg.com/564x/05/4f/e7/054fe717b6a9fe3907cce07956e4e5d8.jpg", followed: true, id: 4, status: "learn redux", location: { contry: 'ukrain', city: "kiev" } },
-        //     { fullName: "sash", photo: "https://i.pinimg.com/564x/05/4f/e7/054fe717b6a9fe3907cce07956e4e5d8.jpg", followed: false, id: 5, status: "learn angulat", location: { contry: 'litva', city: "vilnus" } },
-
-        // ]
-        // )
+    let pagesCount = Math.ceil(props.totalUsersCount / props.pageSize);
+    let pages = [];
+    for (let i = 1; i <= pagesCount; i++) {
+        pages.push(i);
     }
-}
+
     return (
-        <div >
-<button onClick={getUsers}>Get users</button>
+        <div>
+            {pages.map(p => {
+                return <span onClick={() => props.onPageChged(p)}
+                             className={props.currentPage === p && classes.selectedPage}>{p}</span>
+            })}
+
             {
                 props.users.map(user => <div key={user.id}>
                     <span>
                         <div className={classes.photo}>
-                            <img src={user.photos.small !=null?user.photos.smal:Userphoto} />
+                            <NavLink to={`/profile/${user.id}`} >
+                            <img src={user.photos.small != null ? user.photos.small : Userphoto}/>
+                            </NavLink>
                         </div>
                         <div>
                             {user.followed

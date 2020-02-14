@@ -3,7 +3,7 @@
 .header {
     grid-area: h ;
     background-color: indigo;
-    width: 1280px;
+   /*// width: 1280px;*/
     }
     
 
@@ -12,4 +12,13 @@
       width:20px;
       
       }
+
+
+    .loginBlock{
+    float: right;
+    }
+
+    .loginBlock a{
+        color: azure;
+    }
       
