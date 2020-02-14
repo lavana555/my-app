@@ -11,19 +11,22 @@ class HeaderContainer extends React.Component {
 
 
     componentDidMount() {
-        // debugger;
-        // let userId=this.props.match.params.userId
-        // if (!userId) {
-        //     userId=2
-        // }
+
         axios.get(`https://social-network.samuraijs.com/api/1.0/auth/me`,{withCredentials:true}).then(response => {
          //   debugger;
             if(response.data.resultCode===0) {
+              //  debugger;
+                console.log(response)
                 let {id,email,login}=response.data.data
+            //   let userid=response.data.data.id
+              //  debugger;
+               // console.log(userid);
                 this.props.setAuthUserData(id,email,login)
-                 axios.get(`https://social-network.samuraijs.com/api/1.0/profile/`+ 5182).then(response => {
-                    // debugger;
-                     this.props.setUserProfileHeader(response.data)
+                 axios.get(`https://social-network.samuraijs.com/api/1.0/profile/`+ 5348).then(res => {
+                     debugger;
+                     console.log(res)
+                     let photo=res.data.photos.small
+                     this.props.setUserProfileHeader(photo)
                  })
             }
         })
@@ -47,7 +50,7 @@ class HeaderContainer extends React.Component {
     return{
 isAuth: state.auth.isAuth,
         login:state.auth.login,
-         profile: state.profilePage.profile
+         photo: state.auth.photo
     }
  }
 //     return{

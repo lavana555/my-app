@@ -3,7 +3,7 @@ const UNFOLLOW = 'UNFOLLOW';
 const SETUSERPROFILE='SETUSERPROFILE'
 
  export const setAuthUserData = (id,email,login) => ({type: SET_USER_DATA, data:{id,email,login}})
-export const setUserProfileHeader=(profile)=>({type:SETUSERPROFILE,profile})
+export const setUserProfileHeader=(photo)=>({type:SETUSERPROFILE,photo})
 //export const unfollow = (userId) => ({type: UNFOLLOW, userId})
 //export const setusers = (users) => ({type: SETUSERS, users})
 //export const pageChange = (p) => ({type: PageChange, p})
@@ -16,7 +16,7 @@ let initState = {
     email: null,
     login: null,
     isAuth: false,
-     profile:null
+     photo:null
 
 }
 
@@ -39,7 +39,7 @@ export const AuthReduce = (state = initState, action) => {
          case   SETUSERPROFILE:
              //debugger;
              return {
-                 ...state, profile: action.profile
+                 ...state, photo: action.photo
              }
         // case UNFOLLOW:
         //     return {

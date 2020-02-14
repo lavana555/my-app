@@ -12,7 +12,7 @@ const Header = (props) => {
     <div className={classes.loginBlock}>
         {props.isAuth?<NavLink to={'/login'}>{props.login}</NavLink> :<NavLink to={'/login'}>LOGIN</NavLink>  }
         {/*<span>{props.profile.lookingForAJobDescription}</span>*/}
-        {/*<img src={props.profile.photos.small} />*/}
+        <img src={props.photo} />
     </div>
         </header>
     )
