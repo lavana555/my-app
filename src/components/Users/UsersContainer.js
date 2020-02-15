@@ -11,25 +11,28 @@ import {
 import * as axios from "axios";
 import Users from "./Users";
 import Preloader from "../common/preloader/Preloader";
+import {UserAPI} from "../../api/api";
 
 
 class UsersContainer extends React.Component {
 
     componentDidMount() {
         this.props.setIsToggle(true)
-        axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${this.props.currentPage}&count=${this.props.pageSize}`,{withCredentials:true}).then(response => {
+        UserAPI.getUsersPage(this.props.currentPage,this.props.pageSize).then(data => {
+         // debugger
+          //console.log(data)
             this.props.setIsToggle(false)
-            this.props.setusers(response.data.items)
-            this.props.setTotalUsersCount(response.data.totalCount)
+            this.props.setusers(data.items)
+            this.props.setTotalUsersCount(data.totalCount)
         })
     }
 
-    onPageChged = (p) => {
+    onPageChged = (pageNumber) => {
         this.props.setIsToggle(true)
-        this.props.pageChange(p)
-        axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${p}&count=${this.props.pageSize}`,{withCredentials:true}).then(response => {
+        this.props.pageChange(pageNumber)
+        UserAPI.getUsersPage2(pageNumber,this.props.pageSize).then(data => {
             this.props.setIsToggle(false)
-            this.props.setusers(response.data.items)
+            this.props.setusers(data.items)
         })
     }
     render = () => {

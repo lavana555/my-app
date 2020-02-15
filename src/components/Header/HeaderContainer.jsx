@@ -6,18 +6,20 @@ import Header from "./Header";
 import * as axios from "axios";
 import {setAuthUserData, setUserProfileHeader} from "../../redux/Auth-reduce";
 import {setUserProfile} from "../../redux/profilePage-reduce";
+import {Authfunc} from "../../api/api";
 
 class HeaderContainer extends React.Component {
 
 
     componentDidMount() {
 
-        axios.get(`https://social-network.samuraijs.com/api/1.0/auth/me`,{withCredentials:true}).then(response => {
+        axios.get(`https://social-network.samuraijs.com/api/1.0/auth/me`,{withCredentials:true})
+        Authfunc().then(data => {
          //   debugger;
-            if(response.data.resultCode===0) {
+            if(data.resultCode===0) {
               //  debugger;
-                console.log(response)
-                let {id,email,login}=response.data.data
+               // console.log(response)
+                let {id,email,login}=data.data
             //   let userid=response.data.data.id
               //  debugger;
                // console.log(userid);
