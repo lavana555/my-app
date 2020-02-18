@@ -1,3 +1,5 @@
+import {UserAPI} from "../api/api";
+
 const SET_USER_DATA = 'SET_USER_DATA';
 const UNFOLLOW = 'UNFOLLOW';
 const SETUSERPROFILE='SETUSERPROFILE'
@@ -9,6 +11,29 @@ export const setUserProfileHeader=(photo)=>({type:SETUSERPROFILE,photo})
 //export const pageChange = (p) => ({type: PageChange, p})
 //export const setTotalUsersCount = (totalCount) => ({type: TotalUsersCount, totalCount})
 //export const setIsToggle = (isFetching) => ({type: TOGGLE_IS_FETCHING, isFetching})
+
+
+
+
+export const Auth=()=>{
+    return (dispatch)=>{
+        UserAPI.Authfunc().then(data => {
+            if (data.resultCode === 0) {
+                let {id, email, login} = data.data
+                dispatch(setAuthUserData(id, email, login))
+                // axios.get(`https://social-network.samuraijs.com/api/1.0/profile/` + 5348).then(res => {
+                //     debugger;
+                //     console.log(res)
+                //     let photo = res.data.photos.small
+                //     this.props.setUserProfileHeader(photo)
+                // })
+            }
+        })
+
+    }
+}
+
+
 
 let initState = {
 

@@ -1,3 +1,5 @@
+import {UserAPI} from "../api/api";
+
 const ADDPOST='ADD-POST';
 const CHANGEPOST='NEW-POST-CHANGE'
 const SETUSERPROFILE='SET_USER'
@@ -7,6 +9,17 @@ const SETUSERPROFILE='SET_USER'
 export const actionPostAdd=()=>({type:ADDPOST })
 export const actionPOstChange=(NewText)=>({type: CHANGEPOST, newpostschange:NewText})
 export const setUserProfile=(profile)=>({type:SETUSERPROFILE,profile})
+
+
+export const GetUserId=(userId)=>{
+    return (dispatch)=>{
+
+        UserAPI.getUserId(userId).then(data => {
+            dispatch(setUserProfile(data))
+        })
+    }
+}
+
 
 let initState={
   messageEls: [

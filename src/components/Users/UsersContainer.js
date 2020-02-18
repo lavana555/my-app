@@ -6,7 +6,7 @@ import {
     setusers,
     pageChange,
     setTotalUsersCount,
-    setIsToggle, toggleFollowingProgress
+    setIsToggle, toggleFollowingProgress, getUsersThunk, getUsers
 } from '../../redux/UsersPage-reduce';
 import * as axios from "axios";
 import Users from "./Users";
@@ -17,23 +17,28 @@ import {UserAPI} from "../../api/api";
 class UsersContainer extends React.Component {
 
     componentDidMount() {
-        this.props.setIsToggle(true)
-        UserAPI.getUsersPage(this.props.currentPage,this.props.pageSize).then(data => {
-         // debugger
-          //console.log(data)
-            this.props.setIsToggle(false)
-            this.props.setusers(data.items)
-            this.props.setTotalUsersCount(data.totalCount)
-        })
+        this.props.getUsers(this.props.currentPage,this.props.pageSize)
+        // this.props.setIsToggle(true)
+        // UserAPI.getUsersPage(this.props.currentPage,this.props.pageSize).then(data => {
+        //  // debugger
+        //   //console.log(data)
+        //     this.props.setIsToggle(false)
+        //     this.props.setusers(data.items)
+        //     this.props.setTotalUsersCount(data.totalCount)
+        // })
     }
 
     onPageChged = (pageNumber) => {
-        this.props.setIsToggle(true)
-        this.props.pageChange(pageNumber)
-        UserAPI.getUsersPage2(pageNumber,this.props.pageSize).then(data => {
-            this.props.setIsToggle(false)
-            this.props.setusers(data.items)
-        })
+
+
+        this.props.getUsers(pageNumber,this.props.pageSize)
+
+        // this.props.setIsToggle(true)
+        // this.props.pageChange(pageNumber)
+        // UserAPI.getUsersPage2(pageNumber,this.props.pageSize).then(data => {
+        //     this.props.setIsToggle(false)
+        //     this.props.setusers(data.items)
+        // })
     }
     render = () => {
         return (
@@ -73,10 +78,11 @@ let MapStateToProps = (state) => {
 export default connect(MapStateToProps, {
     follow,
     unfollow,
-    setusers,
+     // setusers,
     pageChange,
-    setTotalUsersCount,
-    setIsToggle,
-    toggleFollowingProgress
+     // setTotalUsersCount,
+    // setIsToggle,
+    toggleFollowingProgress,
+    getUsers
 })(UsersContainer);
 

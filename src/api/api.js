@@ -8,55 +8,54 @@ const instance = axios.create({
 })
 
 
-export const UserAPI ={
-    getUsersPage  (currentPage = 1, pageSize = 10)  {
+export const UserAPI = {
+    getUsersPage(currentPage = 1, pageSize = 10) {
         return instance.get(`users?page=${currentPage}&count=${pageSize}`,
         ).then(responce => {
             return responce.data
         })
     },
-    getUsersPage2  (currentPage = 1, pageSize = 10)  {
-        return instance.get(`users?page=${currentPage}&count=${pageSize}`,
-        ).then(responce => {
+    FollowUsers(id) {
+        return instance.post(`follow/${id}`, {},)
+    },
+    UnFollowUsers(id) {
+        return instance.delete(`/follow/${id}`)
+    },
+    Authfunc() {
+        return instance.get(`auth/me`).then(responce => {
             return responce.data
         })
     },
-}
-
-
-
-export const getUsersPage = (currentPage = 1, pageSize = 10) => {
-    return instance.get(`users?page=${currentPage}&count=${pageSize}`,
-    ).then(responce => {
-        return responce.data
-    })
+    getUserId(userId) {
+        return instance.get(`profile/${userId}`).then(responce => {
+            return responce.data
+        })
+    }
 
 }
 
 
-export const UnFollowUsers = (id) => {
-    return instance.delete(`follow/${id}`,
-    ).then(responce => {
-        return responce.data
-    })
-}
+// export const UnFollowUsers = (id) => {
+//     return instance.delete(`follow/${id}`,
+//     ).then(responce => {
+//         return responce.data
+//     })
+// }
+//
+// export const FollowUsers = (id) => {
+//     return instance.post(`follow/${id}`, {},
+//     ).then(responce => {
+//         return responce.data
+//     })
+// }
+// export const getUserId = (userId) => {
+//     return instance.get(`profile/${userId}`, {instance}).then(responce => {
+//         return responce.data
+//     })
+// }
 
-export const FollowUsers = (id) => {
-    return instance.post(`follow/${id}`, {},
-    ).then(responce => {
-        return responce.data
-    })
-}
-
-export const getUserId = (userId) => {
-    return instance.get(`profile/${userId}`, {instance}).then(responce => {
-        return responce.data
-    })
-}
-
-
-export const Authfunc = () => {
-    return instance.get(`auth/me`, {instance}).then(responce => {
-        return responce.data
-    })
-}
+// export const Authfunc = () => {
+//     return instance.get(`auth/me`, {instance}).then(responce => {
+//         return responce.data
+//     })
+// }
