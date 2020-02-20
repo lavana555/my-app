@@ -12,6 +12,7 @@ import * as axios from "axios";
 import Users from "./Users";
 import Preloader from "../common/preloader/Preloader";
 import {UserAPI} from "../../api/api";
+import {WithRedirectComponent} from "../Hoc/WithRedirectComponent";
 
 
 class UsersContainer extends React.Component {
@@ -64,6 +65,10 @@ class UsersContainer extends React.Component {
     }
 }
 
+
+let UsersAuthRdirectComponent=WithRedirectComponent(UsersContainer)
+
+
 let MapStateToProps = (state) => {
     return {
         users: state.usersPage.users,
@@ -84,5 +89,5 @@ export default connect(MapStateToProps, {
     // setIsToggle,
     toggleFollowingProgress,
     getUsers
-})(UsersContainer);
+})(UsersAuthRdirectComponent);
 
