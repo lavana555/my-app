@@ -4,6 +4,7 @@ import Dialogs from './Dialogs';
 import {connect} from 'react-redux'
 import {Redirect} from "react-router-dom";
 import {WithRedirectComponent} from "../Hoc/WithRedirectComponent";
+import {compose} from "redux";
 
 
 let MapDispatchToProps = (dispatch) => {
@@ -19,8 +20,7 @@ let MapDispatchToProps = (dispatch) => {
         }
     }
 }
-
-let AutRedirectComponent = WithRedirectComponent(Dialogs)
+// let AutRedirectComponent = WithRedirectComponent(Dialogs)
 
 // let MapStatePropsForRedirect=(state)=>{
 //     return{
@@ -30,17 +30,16 @@ let AutRedirectComponent = WithRedirectComponent(Dialogs)
 //
 // AutRedirectComponent=connect(MapStatePropsForRedirect)(AutRedirectComponent)
 
-
 let MapStateToProps = (state) => {
     return {
         messagesPage: state.messagesPage,
-
     }
 }
 
+export default compose(
+    connect(MapStateToProps, MapDispatchToProps),
+    WithRedirectComponent)(Dialogs)
 
-
-
-const DialogsContainer = connect(MapStateToProps, MapDispatchToProps)(AutRedirectComponent);
-
-export default DialogsContainer;
+// const DialogsContainer = connect(MapStateToProps, MapDispatchToProps)(AutRedirectComponent);
+//
+// export default DialogsContainer;
