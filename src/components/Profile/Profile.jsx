@@ -5,24 +5,6 @@ import ProfileInfo from './ProfileInfo/ProfileInfo';
 import MyPostsContainer from './MyPosts/MyPostsContainer';
 
 
-// class  ProfileContainer extends React.Component {
-// //debugger;
-//     render = () => {
-//         return  (
-//                   <div>
-//                     <div className={classes.contimg}>
-//                         <ProfileInfo/>
-//                     </div>
-//                     <MyPostsContainer/>
-//                 </div>
-//
-//             )
-//
-//     }
-// }
-
-
-
 
 const Profile = (props) => {
 //debugger;

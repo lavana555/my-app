@@ -28,6 +28,15 @@ class ProfileContainer extends React.Component {
         // })
     }
 
+    // statusChenched=()=>{
+    //       axios.get(`https://social-network.samuraijs.com/api/1.0/profile/` + 5741)
+    //      getUserId(userId)
+    //          .then(data => {
+    //              this.props.setUserProfile(data)
+    //      })
+    // }
+    statusChenged
+
     render = () => {
         return (
             <Profile {...this.props}/>
