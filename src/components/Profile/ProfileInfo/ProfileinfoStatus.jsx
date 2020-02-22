@@ -14,6 +14,7 @@ class ProfileInfoStatus extends React.Component {
 
     }
     activateEditMode=()=>{
+
         this.setState({
             editMode:true
         })
@@ -23,23 +24,25 @@ class ProfileInfoStatus extends React.Component {
         this.setState({
             editMode:false
         })
-        this.prosp.statusChenged(this.state.title)
+      //  debugger
+       this.props.statusChenged(this.state.title)
     }
 
     state={
         editMode:false,
-        title:"this.props.title"
+        title:this.props.status
     }
 
 
 
     render = () => {
+       // let tile= this.state.title?"":"not status text"
         return (
             <div>
 
                 {this.state.editMode
                 ?<input onBlur={this.deactivateEditMode} onChange={this.onTitleChanged} autoFocus={true} value={this.state.title} />
-                    : <span onClick={this.activateEditMode}>{this.state.title}</span>
+                    : <span onClick={this.activateEditMode}>{this.props.status}</span>
                 }
 
             </div>

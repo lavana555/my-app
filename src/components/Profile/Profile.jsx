@@ -10,7 +10,7 @@ const Profile = (props) => {
 //debugger;
     return (<div>
             <div className={classes.contimg}>
-                <ProfileInfo profile={props.profile}/>
+                <ProfileInfo profile={props.profile} status={props.status} statusChenged={props.statusChenged}/>
             </div>
             <MyPostsContainer/>
         </div>

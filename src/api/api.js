@@ -27,12 +27,36 @@ export const UserAPI = {
         })
     },
     getUserId(userId) {
+        console.warn('obsolete method.Please profile object ')
+        return ProfileAPI.getUserId(userId)
+        }
+    }
+
+
+
+
+export const ProfileAPI={
+    getUserId(userId) {
         return instance.get(`profile/${userId}`).then(responce => {
             return responce.data
         })
+    },
+    getStatus(userId) {
+        return instance.get(`/profile/status/${userId}`)
+        //     .then(responce=>{
+        //     return responce.data
+        // })
+    },
+    setStatus(status){
+        return instance.put(`/profile/status`,{status:status})
+        //     .then(responce=>{
+        //     return responce.data
+        // })
     }
 
+
 }
+
 
 
 // export const UnFollowUsers = (id) => {

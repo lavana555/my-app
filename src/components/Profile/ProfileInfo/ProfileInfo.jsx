@@ -13,7 +13,7 @@ const ProfileInfo = (props) => {
         <div>
             <div>
                 {/*<img src='https://www.hakaimagazine.com/wp-content/uploads/header-baltic-sea-radiation.jpg' />*/}
-                <ProfileinfoStatus/>
+                <ProfileinfoStatus status={props.status} statusChenged={props.statusChenged}/>
             </div>
             <div className={classes.description}>
                 <img src={props.profile.photos.large}/>

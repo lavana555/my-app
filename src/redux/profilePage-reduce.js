@@ -1,14 +1,23 @@
-import {UserAPI} from "../api/api";
+import {ProfileAPI, UserAPI} from "../api/api";
+import {useReduxContext} from "react-redux/lib/hooks/useReduxContext";
 
 const ADDPOST='ADD-POST';
 const CHANGEPOST='NEW-POST-CHANGE'
 const SETUSERPROFILE='SET_USER'
+// const GETSTATUS="GET_STATUS"
+const GETSTATUS2="GET_STATUS2"
+const SETSTATUS="SET_STATUS"
+// const ADDSTATUS="ADD_STATUS"
 
 
 
 export const actionPostAdd=()=>({type:ADDPOST })
 export const actionPOstChange=(NewText)=>({type: CHANGEPOST, newpostschange:NewText})
 export const setUserProfile=(profile)=>({type:SETUSERPROFILE,profile})
+export const GetUserProfile=(status)=>({type:GETSTATUS2,status})
+export const SetUserStatusProfile=(status)=>({type:SETSTATUS,status})
+// export const getStatus=(status)=>({type:GETSTATUS,status})
+// export const addStatus=(status)=>({type:ADDSTATUS,status})
 
 
 export const GetUserId=(userId)=>{
@@ -21,13 +30,39 @@ export const GetUserId=(userId)=>{
 }
 
 
+
+export const GetUserStatus=(userId)=>{
+   // debugger
+    return(dispatch)=>{
+        ProfileAPI.getStatus(userId).then(responce=>{
+            dispatch(GetUserProfile(responce.data))
+        })
+
+    }
+}
+
+export const SetUserStatus=(status)=>{
+   // debugger;
+    return (dispatch)=>{
+        ProfileAPI.setStatus(status).then(response=>{
+            if (response.data.resultCode===0){
+                dispatch(SetUserStatusProfile(status))
+            }
+        })
+    }
+}
+
+
+
+
 let initState={
   messageEls: [
     { message: "hi did you want", liCounts: '5', id: 1 },
     { message: "what are you doin now", liCounts: '55', id: 2 }
   ],
   newPostText: "it kamasutra",
-    profile:null
+    profile:null,
+    status:null
 }
 
 export const ProfilePageReduce=(state=initState,action)=>{
@@ -35,6 +70,7 @@ export const ProfilePageReduce=(state=initState,action)=>{
 
 
  switch (action.type) {
+
   case ADDPOST:
     let newpost = {
             message: state.newPostText,
@@ -53,6 +89,22 @@ export const ProfilePageReduce=(state=initState,action)=>{
          return {
              ...state, profile: action.profile
          }
+     // case GETSTATUS:
+     //   return {  ...state,status:action.status
+     //   }
+     case GETSTATUS2:
+         return {  ...state,status:action.status
+         }
+
+     case SETSTATUS:
+       // debugger
+         return {  ...state,status:action.status
+         }
+
+
+     // case ADDSTATUS:
+     //     return {  ...state,status:action.status
+     //     }
   default:
     return state
 }
