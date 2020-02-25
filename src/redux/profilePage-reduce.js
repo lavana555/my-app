@@ -62,7 +62,7 @@ let initState={
   ],
   newPostText: "it kamasutra",
     profile:null,
-    status:null
+    status:""
 }
 
 export const ProfilePageReduce=(state=initState,action)=>{

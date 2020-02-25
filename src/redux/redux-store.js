@@ -5,6 +5,8 @@ import SiteBarReduce from "./sitebar-reduce";
 import UsersPageReduce from "./UsersPage-reduce";
 import AuthReduce from "./Auth-reduce";
 import thunkMiddleware from "redux-thunk"
+import { reducer as formReducer } from 'redux-form'
+
 
 
 let reducerStore=combineReducers({
@@ -12,7 +14,8 @@ let reducerStore=combineReducers({
     messagesPage:MessagesPageReduce,
     sitebarPage:SiteBarReduce,
     usersPage:UsersPageReduce,
-    auth:AuthReduce
+    auth:AuthReduce,
+    form:formReducer
 
 })
 

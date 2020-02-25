@@ -56,21 +56,6 @@ export const unfollow=(userid)=>{
 }
 
 
-
-
-
-
-
-
-// this.props.setIsToggle(true)
-// this.props.pageChange(pageNumber)
-// UserAPI.getUsersPage2(pageNumber,this.props.pageSize).then(data => {
-//     this.props.setIsToggle(false)
-//     this.props.setusers(data.items)
-// })
-
-
-
 let initState = {
     users: [],
     pageSize: 15,

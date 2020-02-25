@@ -25,11 +25,12 @@ class ProfileContainer extends React.Component {
 
         let userId = this.props.match.params.userId
         if (!userId) {
-            userId = 2
+            userId =  5741
         }
         this.props.GetUserId(userId)
     //    this.props.GetUserStatus(userId)
-        this.props.GetUserStatus(userId)
+    //     setTimeout(()=>this.props.GetUserStatus(userId),2000)
+         this.props.GetUserStatus(userId)
        // this._restoreState(userId)
         //statusChenged
     }
