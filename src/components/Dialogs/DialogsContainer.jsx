@@ -9,8 +9,8 @@ import {compose} from "redux";
 
 let MapDispatchToProps = (dispatch) => {
     return {
-        addMessage: () => {
-            let action = actionAddMessage()
+        addMessage: (newMessagePost) => {
+            let action = actionAddMessage(newMessagePost)
             dispatch(action)
         },
         MessageChange: (newChangeMessage) => {
@@ -20,15 +20,6 @@ let MapDispatchToProps = (dispatch) => {
         }
     }
 }
-// let AutRedirectComponent = WithRedirectComponent(Dialogs)
-
-// let MapStatePropsForRedirect=(state)=>{
-//     return{
-//         isAuth: state.auth.isAuth
-//     }
-// }
-//
-// AutRedirectComponent=connect(MapStatePropsForRedirect)(AutRedirectComponent)
 
 let MapStateToProps = (state) => {
     return {
@@ -40,6 +31,3 @@ export default compose(
     connect(MapStateToProps, MapDispatchToProps),
     WithRedirectComponent)(Dialogs)
 
-// const DialogsContainer = connect(MapStateToProps, MapDispatchToProps)(AutRedirectComponent);
-//
-// export default DialogsContainer;

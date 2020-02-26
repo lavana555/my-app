@@ -11,7 +11,7 @@ const SETSTATUS="SET_STATUS"
 
 
 
-export const actionPostAdd=()=>({type:ADDPOST })
+export const actionPostAdd=(newmessage)=>({type:ADDPOST,newmessage })
 export const actionPOstChange=(NewText)=>({type: CHANGEPOST, newpostschange:NewText})
 export const setUserProfile=(profile)=>({type:SETUSERPROFILE,profile})
 export const GetUserProfile=(status)=>({type:GETSTATUS2,status})
@@ -71,16 +71,14 @@ export const ProfilePageReduce=(state=initState,action)=>{
 
  switch (action.type) {
 
-  case ADDPOST:
-    let newpost = {
-            message: state.newPostText,
-            liCounts: 5,
-            id: 3
-          }
-    return {
-      ...state, messageEls: [...state.messageEls, newpost], newPostText: ''
-     
-    }
+     case ADDPOST:
+
+      return {
+          ...state, messageEls: [...state.messageEls, {message: action.newmessage, id:5,liCounts:5}],
+
+      }
+
+
   case CHANGEPOST:
    return {
      ...state, newPostText: action.newpostschange

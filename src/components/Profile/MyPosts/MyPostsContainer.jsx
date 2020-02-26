@@ -41,8 +41,8 @@ return {
 
 let MapDispatchToProps=(dispatch)=>{
 return {
-   addPost : () => {
-    let action = actionPostAdd();
+   addPost : (newmessage) => {
+    let action = actionPostAdd(newmessage);
     dispatch(action);
   },
 

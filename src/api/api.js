@@ -26,16 +26,19 @@ export const UserAPI = {
             return responce.data
         })
     },
+    // Loginfunc(formData) {
+    //     return instance.post(`/auth/login`,{},{formData}).then(responce => {
+    //         return responce.data
+    //     })
+    // },
     getUserId(userId) {
         console.warn('obsolete method.Please profile object ')
         return ProfileAPI.getUserId(userId)
-        }
     }
+}
 
 
-
-
-export const ProfileAPI={
+export const ProfileAPI = {
     getUserId(userId) {
         return instance.get(`profile/${userId}`).then(responce => {
             return responce.data
@@ -47,8 +50,8 @@ export const ProfileAPI={
         //     return responce.data
         // })
     },
-    setStatus(status){
-        return instance.put(`/profile/status`,{status:status})
+    setStatus(status) {
+        return instance.put(`/profile/status`, {status: status})
         //     .then(responce=>{
         //     return responce.data
         // })
@@ -59,27 +62,3 @@ export const ProfileAPI={
 
 
 
-// export const UnFollowUsers = (id) => {
-//     return instance.delete(`follow/${id}`,
-//     ).then(responce => {
-//         return responce.data
-//     })
-// }
-//
-// export const FollowUsers = (id) => {
-//     return instance.post(`follow/${id}`, {},
-//     ).then(responce => {
-//         return responce.data
-//     })
-// }
-// export const getUserId = (userId) => {
-//     return instance.get(`profile/${userId}`, {instance}).then(responce => {
-//         return responce.data
-//     })
-// }
-
-// export const Authfunc = () => {
-//     return instance.get(`auth/me`, {instance}).then(responce => {
-//         return responce.data
-//     })
-// }

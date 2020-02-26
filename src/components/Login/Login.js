@@ -1,14 +1,19 @@
 import React from 'react';
 import {Field, reduxForm} from "redux-form";
+import {connect} from "react-redux";
+import mapStateToProps from "react-redux/lib/connect/mapStateToProps";
+import mapDispatchToProps from "react-redux/lib/connect/mapDispatchToProps";
+import {UserAPI} from "../../api/api";
+import {pageChange, setIsToggle, setTotalUsersCount, setusers} from "../../redux/UsersPage-reduce";
 
 
 const LoginForm = (props) => {
-  //  const {handleSubmit}=props
+    //  const {handleSubmit}=props
     return (
         <form onSubmit={props.handleSubmit}>
             <div>
 
-                <Field placeholder={"your login"}  name={"login"} component={"input"} type="text"/>
+                <Field placeholder={"your login"} name={"login"} component={"input"} type="text"/>
             </div>
             <div>
                 <Field placeholder={"your password"} name={"password"} component={"input"} type="text"/>
@@ -23,13 +28,15 @@ const LoginForm = (props) => {
     )
 }
 
-const LoginReduxForm = reduxForm({form:'login'})(LoginForm)
+const LoginReduxForm = reduxForm({form: 'login'})(LoginForm)
 
 export const Login = (props) => {
 
-const onSubmit=(formData)=>{
-    console.log(formData)
-}
+    const onSubmit = (formData) => {
+        console.log(formData)
+        this.props.onSubmit(formData)
+
+    }
 
     return (
         <div>
@@ -40,4 +47,16 @@ const onSubmit=(formData)=>{
 }
 
 
+// const LoginThunk=(formData)=>{
+//     return (dispatch)=> {
+//
+//         UserAPI.Loginfunc(formData).then(data => {
+//             // dispatch(setTotalUsersCount(data.totalCount))
+//         })
+//     }
+//
+// }
+
 export default Login;
+
+// export default connect(mapStateToProps,mapDispatchToProps)(Login);
