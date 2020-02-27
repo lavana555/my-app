@@ -1,0 +1,12 @@
+
+
+/*.formcontrol {*/
+/*    border: solid 1px red;*/
+/*}*/
+
+.formcontrol.show input ,
+.formcontrol.show textarea {
+    border: solid 2px red;
+}
+
+

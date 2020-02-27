@@ -6,7 +6,12 @@ import Message from './Message';
 import {actionAddMessage, actionMessageChange} from '../../redux/messagesPage-reduce';
 import {Dialog} from "./Dialog";
 import {Field, reduxForm} from "redux-form";
+import {TextArea} from "../common/FormsControl/FormsControls";
+import {MaxLengthCreator, required} from "../utils/validators/validators";
 
+
+
+const    maxLength=MaxLengthCreator(5)
 
 const Dialogs = (props) => {
 
@@ -44,7 +49,9 @@ const DialogForm = (props) => {
     return (
         <form onSubmit={props.handleSubmit}>
             <div>
-                <Field placeholder={"your ghhgmessage"} name={"newMessagePost"} component={"textarea"} type={"text"}/>
+                <Field placeholder={"your ghhgmessage"} name={"newMessagePost"} component={TextArea} type={"text"}
+                       validate={[required, maxLength]}
+                />
             </div>
             <div>
                 <button>Add</button>

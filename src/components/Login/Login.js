@@ -1,10 +1,7 @@
 import React from 'react';
 import {Field, reduxForm} from "redux-form";
-import {connect} from "react-redux";
-import mapStateToProps from "react-redux/lib/connect/mapStateToProps";
-import mapDispatchToProps from "react-redux/lib/connect/mapDispatchToProps";
-import {UserAPI} from "../../api/api";
-import {pageChange, setIsToggle, setTotalUsersCount, setusers} from "../../redux/UsersPage-reduce";
+import {Input} from "../common/FormsControl/FormsControls";
+import {required} from "../utils/validators/validators";
 
 
 const LoginForm = (props) => {
@@ -13,13 +10,19 @@ const LoginForm = (props) => {
         <form onSubmit={props.handleSubmit}>
             <div>
 
-                <Field placeholder={"your login"} name={"login"} component={"input"} type="text"/>
+                <Field placeholder={"your login"} name={"login"} component={Input} type="text"
+                       validate={[required]}
+                />
             </div>
             <div>
-                <Field placeholder={"your password"} name={"password"} component={"input"} type="text"/>
+                <Field placeholder={"your password"} name={"password"} component={Input} type="text"
+                       validate={[required]}
+                />
             </div>
             <div>
-                <Field component={"input"} name={"rememberme"} type={"checkbox"}/>remember me
+                <Field component={Input} name={"rememberme"} type={"checkbox"}
+                       validate={[required]}
+                />remember me
             </div>
             <div>
                 <button>Login</button>
@@ -47,16 +50,7 @@ export const Login = (props) => {
 }
 
 
-// const LoginThunk=(formData)=>{
-//     return (dispatch)=> {
-//
-//         UserAPI.Loginfunc(formData).then(data => {
-//             // dispatch(setTotalUsersCount(data.totalCount))
-//         })
-//     }
-//
-// }
+
 
 export default Login;
 
-// export default connect(mapStateToProps,mapDispatchToProps)(Login);
