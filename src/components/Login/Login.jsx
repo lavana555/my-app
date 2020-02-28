@@ -5,6 +5,7 @@ import {required} from "../utils/validators/validators";
 import {connect} from "react-redux";
 import {LoginThunk} from "../../redux/Auth-reduce";
 import {Redirect} from "react-router-dom";
+import classes from "./Login.module.css"
 
 
 
@@ -28,6 +29,9 @@ const LoginForm = (props) => {
                        validate={[required]}
                 />remember me
             </div>
+            <div className={props.error?classes.errorinput:""}>
+                {props.error}
+                </div>
             <div>
                 <button>Login</button>
             </div>
