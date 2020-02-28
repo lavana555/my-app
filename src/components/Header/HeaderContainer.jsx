@@ -4,7 +4,7 @@ import {NavLink} from "react-router-dom";
 import {connect} from 'react-redux'
 import Header from "./Header";
 import * as axios from "axios";
-import {Auth, setAuthUserData, setUserProfileHeader} from "../../redux/Auth-reduce";
+import {Auth, LogOutThnuk, setAuthUserData, setUserProfileHeader} from "../../redux/Auth-reduce";
 import {setUserProfile} from "../../redux/profilePage-reduce";
 import {Authfunc} from "../../api/api";
 
@@ -28,9 +28,16 @@ this.props.Auth()
         //     }
         // })
     }
+
+    onLoginOut=()=>{
+        this.props.LogOutThnuk()
+    }
+
+
+
     render = () => {
         return (
-            <Header {...this.props} profile={this.props.profile}/>
+            <Header {...this.props} profile={this.props.profile} LoginOut={this.onLoginOut}/>
             // <header className={classes.header}>
             //     <img src='https://i.pinimg.com/236x/2a/ca/23/2aca2374046eaf3846684ffea5b80fc3.jpg'/>
             //     <div className={classes.loginBlock}>
@@ -59,4 +66,5 @@ export default connect(mapStateToProps, {
     setAuthUserData,
     setUserProfileHeader,
     Auth,
+    LogOutThnuk
 })(HeaderContainer);

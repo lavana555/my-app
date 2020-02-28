@@ -26,11 +26,15 @@ export const UserAPI = {
             return responce.data
         })
     },
-    // Loginfunc(formData) {
-    //     return instance.post(`/auth/login`,{},{formData}).then(responce => {
-    //         return responce.data
-    //     })
-    // },
+   LoginUsers(email,password,rememberMe=false){
+        return instance.post(`/auth/login`,{email,password,rememberMe})
+        },
+
+    LogOut() {
+    return instance.delete(`/auth/login`)
+},
+
+
     getUserId(userId) {
         console.warn('obsolete method.Please profile object ')
         return ProfileAPI.getUserId(userId)

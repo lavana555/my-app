@@ -2,7 +2,7 @@ import React from 'react';
 import classes from './FormsControls.module.css'
 
 export const TextArea = ({input, meta, ...props}) => {
-    debugger;
+  //  debugger;
 
   let  HasError=meta.touched && meta.error
     return (
@@ -20,7 +20,7 @@ export const TextArea = ({input, meta, ...props}) => {
 
 
 export const Input = ({input, meta, ...props}) => {
-    debugger;
+ //   debugger;
 
     let  HasError=meta.touched && meta.error
     return (
