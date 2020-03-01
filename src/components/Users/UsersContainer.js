@@ -13,6 +13,13 @@ import Users from "./Users";
 import Preloader from "../common/preloader/Preloader";
 import {UserAPI} from "../../api/api";
 import {WithRedirectComponent} from "../Hoc/WithRedirectComponent";
+import {
+    currentPageSelctor,
+    isFetchingSelctor, isFolowwingProgresSelctor,
+    pageSizeSelctor,
+    totalUsersCountSelctor,
+    userSelctor
+} from "../../redux/users-selector";
 
 
 class UsersContainer extends React.Component {
@@ -69,16 +76,33 @@ class UsersContainer extends React.Component {
 let UsersAuthRdirectComponent=WithRedirectComponent(UsersContainer)
 
 
+// let MapStateToProps = (state) => {
+//     return {
+//         users: state.usersPage.users,
+//         pageSize: state.usersPage.pageSize,
+//         totalUsersCount: state.usersPage.totalUsersCount,
+//         currentPage: state.usersPage.currentPage,
+//         isFetching: state.usersPage.isFetching,
+//         isFolowwingProgres:state.usersPage.isFolowwingProgres
+//     }
+// }
+
+
 let MapStateToProps = (state) => {
     return {
-        users: state.usersPage.users,
-        pageSize: state.usersPage.pageSize,
-        totalUsersCount: state.usersPage.totalUsersCount,
-        currentPage: state.usersPage.currentPage,
-        isFetching: state.usersPage.isFetching,
-        isFolowwingProgres:state.usersPage.isFolowwingProgres
+        users: userSelctor,
+        pageSize: pageSizeSelctor,
+        totalUsersCount: totalUsersCountSelctor,
+        currentPage: currentPageSelctor,
+        isFetching: isFetchingSelctor,
+        isFolowwingProgres:isFolowwingProgresSelctor
     }
 }
+
+
+
+
+
 
 export default connect(MapStateToProps, {
     follow,
