@@ -49,6 +49,7 @@ class UsersContainer extends React.Component {
         // })
     }
     render = () => {
+        console.log("render_users")
         return (
             <>
                 {this.props.isFetching ?
@@ -89,13 +90,14 @@ let UsersAuthRdirectComponent=WithRedirectComponent(UsersContainer)
 
 
 let MapStateToProps = (state) => {
+    console.log("mapstatetoprops_container")
     return {
-        users: userSelctor,
-        pageSize: pageSizeSelctor,
-        totalUsersCount: totalUsersCountSelctor,
-        currentPage: currentPageSelctor,
-        isFetching: isFetchingSelctor,
-        isFolowwingProgres:isFolowwingProgresSelctor
+        users: userSelctor(state),
+        pageSize: pageSizeSelctor(state),
+        totalUsersCount: totalUsersCountSelctor(state),
+        currentPage: currentPageSelctor(state),
+        isFetching: isFetchingSelctor(state),
+        isFolowwingProgres:isFolowwingProgresSelctor(state)
     }
 }
 

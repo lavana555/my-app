@@ -22,7 +22,7 @@ import {compose} from "redux";
 
 class ProfileContainer extends React.Component {
     componentDidMount() {
-        debugger;
+        //debugger;
         let userId = this.props.match.params.userId
         if (!userId) {
             userId = this.props.AutorizId
@@ -43,6 +43,7 @@ class ProfileContainer extends React.Component {
     }
 
     render = () => {
+        // console.log("PROFILE_RENDER")
         return (
             <Profile {...this.props} statusChenged={this.statusChenged}/>
         )
@@ -51,6 +52,7 @@ class ProfileContainer extends React.Component {
 
 
 let mapStateToProps = (state) => {
+    // console.log("mapstatetoprops_profile")
     return {
         profile: state.profilePage.profile,
         status: state.profilePage.status,

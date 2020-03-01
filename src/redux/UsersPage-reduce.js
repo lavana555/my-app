@@ -62,12 +62,20 @@ let initState = {
     totalUsersCount: 0,
     currentPage: 2,
     isFetching: true,
-    isFolowwingProgres: []
+    isFolowwingProgres: [],
+    fake:10
 
 }
 
 export const UsersPageReduce = (state = initState, action) => {
     switch (action.type) {
+
+        case "FAKE":
+            return {
+                ...state,
+                fake:state.fake+1
+            }
+
         case FOLLOW:
             return {
                 ...state,
