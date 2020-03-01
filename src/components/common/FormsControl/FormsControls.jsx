@@ -2,8 +2,6 @@ import React from 'react';
 import classes from './FormsControls.module.css'
 
 export const TextArea = ({input, meta, ...props}) => {
-  //  debugger;
-
   let  HasError=meta.touched && meta.error
     return (
         <div className={classes.formcontrol+" "+(HasError?classes.show:"")}>
@@ -20,8 +18,6 @@ export const TextArea = ({input, meta, ...props}) => {
 
 
 export const Input = ({input, meta, ...props}) => {
- //   debugger;
-
     let  HasError=meta.touched && meta.error
     return (
         <div className={classes.formcontrol+" "+(HasError?classes.show:"")}>

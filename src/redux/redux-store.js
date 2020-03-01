@@ -6,6 +6,7 @@ import UsersPageReduce from "./UsersPage-reduce";
 import AuthReduce from "./Auth-reduce";
 import thunkMiddleware from "redux-thunk"
 import { reducer as formReducer } from 'redux-form'
+import AppReduce from "./App-reduce";
 
 
 
@@ -15,7 +16,8 @@ let reducerStore=combineReducers({
     sitebarPage:SiteBarReduce,
     usersPage:UsersPageReduce,
     auth:AuthReduce,
-    form:formReducer
+    form:formReducer,
+    init:AppReduce
 
 })
 

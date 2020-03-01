@@ -16,10 +16,10 @@ export const LoginUserAC=(email,password,rememberMe)=>({type:LOGINUSER,data:{ema
 //export const setIsToggle = (isFetching) => ({type: TOGGLE_IS_FETCHING, isFetching})
 
 
-export const Auth = () => {
+export const Auth = () => (dispatch)=>{
     //debugger;
-    return (dispatch) => {
-        UserAPI.Authfunc().then(data => {
+    // return (dispatch) => {
+    return  UserAPI.Authfunc().then(data => {
             if (data.resultCode === 0) {
                 let {id, email, login} = data.data
                 dispatch(setAuthUserData(id, email, login,true))
@@ -27,7 +27,8 @@ export const Auth = () => {
             }
         })
 
-    }
+    // }
+
 }
 
 

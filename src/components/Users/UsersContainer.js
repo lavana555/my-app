@@ -89,5 +89,5 @@ export default connect(MapStateToProps, {
     // setIsToggle,
     toggleFollowingProgress,
     getUsers
-})(UsersAuthRdirectComponent);
+})(UsersContainer);
 

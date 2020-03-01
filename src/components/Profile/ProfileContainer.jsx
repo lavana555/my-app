@@ -22,17 +22,17 @@ import {compose} from "redux";
 
 class ProfileContainer extends React.Component {
     componentDidMount() {
-
+debugger;
         let userId = this.props.match.params.userId
         if (!userId) {
             userId =  this.props.AutorizId
+            if (!userId){
+                this.props.history.push("/login")
+            }
         }
+
         this.props.GetUserId(userId)
-    //    this.props.GetUserStatus(userId)
-    //     setTimeout(()=>this.props.GetUserStatus(userId),2000)
          this.props.GetUserStatus(userId)
-       // this._restoreState(userId)
-        //statusChenged
     }
 
 
