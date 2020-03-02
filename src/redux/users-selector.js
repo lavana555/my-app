@@ -1,7 +1,19 @@
+import { createSelector } from 'reselect'
+import {getUsers} from "./UsersPage-reduce";
+
+
+
+
 
 export const userSelctor=(state)=>{
     return state.usersPage.users
 }
+
+
+export const userSuperSelector=createSelector(userSelctor,(users)=>{
+    debugger;
+    return users.filter(u=>true)
+})
 
 export const pageSizeSelctor=(state)=>{
     return state.usersPage.pageSize

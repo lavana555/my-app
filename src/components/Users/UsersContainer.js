@@ -18,7 +18,7 @@ import {
     isFetchingSelctor, isFolowwingProgresSelctor,
     pageSizeSelctor,
     totalUsersCountSelctor,
-    userSelctor
+    userSelctor, userSuperSelctor, userSuperSelector
 } from "../../redux/users-selector";
 
 
@@ -92,7 +92,7 @@ let UsersAuthRdirectComponent=WithRedirectComponent(UsersContainer)
 let MapStateToProps = (state) => {
     console.log("mapstatetoprops_container")
     return {
-        users: userSelctor(state),
+        users: userSuperSelector(state),
         pageSize: pageSizeSelctor(state),
         totalUsersCount: totalUsersCountSelctor(state),
         currentPage: currentPageSelctor(state),
