@@ -4,13 +4,13 @@ import React, { useState,useEffect } from 'react';
 
 
 const ProfileinfoStatusWithHook =(props)=> {
-debugger
+//debugger
     let [editMode,setEditMode]=useState(false)
     let[status,setTitle]=useState(props.status)
 
 
     useEffect(()=>{
-       debugger
+      // debugger
         setTitle(props.status)
     },[props.status])
 

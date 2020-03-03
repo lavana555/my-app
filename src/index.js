@@ -13,6 +13,15 @@ setInterval(()=>{
 },1000)
 
 
+
+
+// let h1= document.createElement("h1");
+// h1.innerHTML="HELLO"
+// document.querySelector("body").appendChild(h1);
+
+
+
+
 ReactDOM.render(
     <BrowserRouter>
         <Provider store={store}>
