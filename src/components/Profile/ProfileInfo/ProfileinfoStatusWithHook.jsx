@@ -1,11 +1,19 @@
-import React, { useState } from 'react';
+import React, { useState,useEffect } from 'react';
+
 
 
 
 const ProfileinfoStatusWithHook =(props)=> {
-
+debugger
     let [editMode,setEditMode]=useState(false)
     let[status,setTitle]=useState(props.status)
+
+
+    useEffect(()=>{
+       debugger
+        setTitle(props.status)
+    },[props.status])
+
 
    const  onTitleChanged = (e) => {
        let status = e.currentTarget.value;
