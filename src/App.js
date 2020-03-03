@@ -14,11 +14,14 @@ import UsersContainer from './components/Users/UsersContainer';
 import ProfileContainer from "./components/Profile/ProfileContainer";
 import HeaderContainer from "./components/Header/HeaderContainer";
 import Login from "./components/Login/Login"
-import {connect} from "react-redux";
+import {connect, Provider} from "react-redux";
 import {Auth} from "./redux/Auth-reduce";
 import {compose} from "redux";
 import {initializeApp} from "./redux/App-reduce";
 import Preloader from "./components/common/preloader/Preloader";
+import store from "./redux/redux-store";
+// import {BrowserRouter} from 'react-router-dom';
+// import {Provider} from 'react-redux';
 
 
 class App extends Component {
@@ -38,6 +41,8 @@ class App extends Component {
 
 
         return (
+            // <BrowserRouter>
+            //     <Provider store={store}>
             <div className='app-wrapper'>
                 <HeaderContainer/>
                 {/* <Navbar sitebar={props.state.sitebarPage.sitebar} /> */}
@@ -57,7 +62,7 @@ class App extends Component {
             </div>
 
         );
-
+                 // </Provider>  </BrowserRouter>
     }
 }
 //

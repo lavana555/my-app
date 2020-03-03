@@ -12,7 +12,9 @@ const maxLength = MaxLengthCreator(10)
 
 const MyPosts=React.memo(props=> {
     console.log("RENDER YO")
-    let taskmessageEls = props.profilePage.messageEls.map(messageEl => <Post message={messageEl.message}
+    let taskmessageEls = [...props.profilePage.messageEls]
+        .reverse()
+        .map(messageEl => <Post message={messageEl.message}
                                                                              liCounts={messageEl.liCounts}/>)
     let addNewPost = (values) => {
         props.addPost(values.newmessage)
