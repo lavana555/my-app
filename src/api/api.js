@@ -59,7 +59,11 @@ export const ProfileAPI = {
         //     .then(responce=>{
         //     return responce.data
         // })
+    },
+    SetUserId(userId,aboutMe) {
+        return instance.put(`profile/${userId}`,{aboutMe})
     }
+
 
 
 }

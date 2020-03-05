@@ -19,35 +19,46 @@ export const GetUserProfile = (status) => ({type: GETSTATUS2, status})
 export const SetUserStatusProfile = (status) => ({type: SETSTATUS, status})
 
 
-export const GetUserId = (userId) => {
-    return (dispatch) => {
-
-        UserAPI.getUserId(userId).then(data => {
+export const GetUserId = (userId) => async (dispatch)=>{
+    // return (dispatch) => {
+let data=await UserAPI.getUserId(userId)
+        // UserAPI.getUserId(userId).then(data => {
             dispatch(setUserProfile(data))
-        })
-    }
+        // })
+    // }
 }
 
+// export const GetUserId = (userId) =>{
+//     return (dispatch) => {
+//    // let data= UserAPI.getUserId(userId)
+//     UserAPI.getUserId(userId).then(data => {
+//     dispatch(setUserProfile(data))
+//      })
+//      }
+// }
 
-export const GetUserStatus = (userId) => {
+
+export const GetUserStatus = (userId) => async (dispatch)=>{
     // debugger
-    return (dispatch) => {
-        ProfileAPI.getStatus(userId).then(responce => {
+    // return (dispatch) => {
+    let responce=await  ProfileAPI.getStatus(userId)
+        // ProfileAPI.getStatus(userId).then(responce => {
             dispatch(GetUserProfile(responce.data))
-        })
+        // })
 
-    }
+    // }
 }
 
-export const SetUserStatus = (status) => {
+export const SetUserStatus = (status) => async (dispatch)=>{
     // debugger;
-    return (dispatch) => {
-        ProfileAPI.setStatus(status).then(response => {
+    // return (dispatch) => {
+    let response=ProfileAPI.setStatus(status)
+        // ProfileAPI.setStatus(status).then(response => {
             if (response.data.resultCode === 0) {
                 dispatch(SetUserStatusProfile(status))
             }
-        })
-    }
+        // })
+    // }
 }
 
 

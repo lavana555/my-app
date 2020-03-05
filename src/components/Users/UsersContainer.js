@@ -25,7 +25,8 @@ import {
 class UsersContainer extends React.Component {
 
     componentDidMount() {
-        this.props.getUsers(this.props.currentPage,this.props.pageSize)
+        const {currentPage,pageSize}=this.props
+        this.props.getUsers(currentPage,pageSize)
         // this.props.setIsToggle(true)
         // UserAPI.getUsersPage(this.props.currentPage,this.props.pageSize).then(data => {
         //  // debugger

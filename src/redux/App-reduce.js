@@ -13,10 +13,9 @@ export const InitializedSucces=()=>({type:SETINITIALIZED})
 
      let propmise= dispatch(Auth())
      Promise.all([propmise]).then(()=>{
-       //  debugger;
+
          dispatch(InitializedSucces())})
-     // dispatch(somethingElse())
-     // dispatch(InitializedSucces())
+
 
  }
 

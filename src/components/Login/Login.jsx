@@ -1,6 +1,6 @@
 import React from 'react';
 import {Field, reduxForm} from "redux-form";
-import {Input} from "../common/FormsControl/FormsControls";
+import {FieldTag, Input} from "../common/FormsControl/FormsControls";
 import {required} from "../utils/validators/validators";
 import {connect} from "react-redux";
 import {LoginThunk} from "../../redux/Auth-reduce";
@@ -14,15 +14,10 @@ const LoginForm = (props) => {
     return (
         <form onSubmit={props.handleSubmit}>
             <div>
-
-                <Field placeholder={"your login"} name={"email"} component={Input} type="text"
-                       validate={[required]}
-                />
+                {FieldTag("your login","email",Input,"text",[required])}
             </div>
             <div>
-                <Field placeholder={"your password"} name={"password"} component={Input} type="text"
-                       validate={[required]}
-                />
+                {FieldTag("your password","password",Input,"text",[required])}
             </div>
             <div>
                 <Field component={Input} name={"rememberMe"} type={"checkbox"}

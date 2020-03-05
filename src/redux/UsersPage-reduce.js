@@ -31,29 +31,56 @@ export const getUsers=(currentPage,pageSize)=>{
 
 }
 
-export const follow=(userid)=>{
-    return (dispatch)=>{
-        dispatch(toggleFollowingProgress(true, userid))
-        UserAPI.FollowUsers(userid).then(responce => {
-            if (responce.data.resultCode === 0) {
-                dispatch(followsSucess(userid))
-            }
-            dispatch(toggleFollowingProgress(false, userid))
-        })
+ const followUnfollow=async (dispatch,userid,apiMethod,acCreator)=>{
+
+    dispatch(toggleFollowingProgress(true, userid))
+    let responce=await apiMethod(userid)
+    if (responce.data.resultCode === 0) {
+        dispatch(acCreator(userid))
     }
+    dispatch(toggleFollowingProgress(false, userid))
+
+
+
 }
 
-export const unfollow=(userid)=>{
-    return (dispatch)=>{
-        dispatch(toggleFollowingProgress(true, userid))
-        UserAPI.UnFollowUsers(userid).then(responce => {
-            if (responce.data.resultCode === 0) {
-                dispatch(unfollowSucess(userid))
-            }
-            dispatch(toggleFollowingProgress(false, userid))
-        })
-    }
+
+// export const follow=(userid)=>async (dispatch)=>{
+//     let apiMethod= UserAPI.FollowUsers.bind(UserAPI)
+//     let acCreator=followsSucess
+//         dispatch(toggleFollowingProgress(true, userid))
+//    let responce=await apiMethod(userid)
+//             if (responce.data.resultCode === 0) {
+//                 dispatch(acCreator(userid))
+//             }
+//             dispatch(toggleFollowingProgress(false, userid))
+// }
+
+export const follow=(userid)=> (dispatch)=>{
+    let apiMethod=  UserAPI.FollowUsers.bind(UserAPI)
+    let acCreator=followsSucess
+    followUnfollow(dispatch,userid,apiMethod,acCreator)
 }
+
+export const unfollow=(userid)=> (dispatch)=>{
+    let apiMethod=  UserAPI.UnFollowUsers.bind(UserAPI)
+    let acCreator=unfollowSucess
+    followUnfollow(dispatch,userid,apiMethod,acCreator)
+}
+
+
+// export const unfollow=(userid)=>async(dispatch)=>{
+//
+//     let apiMethod=UserAPI.UnFollowUsers.bind(UserAPI)
+//     let acCreator=unfollowSucess
+//         dispatch(toggleFollowingProgress(true, userid))
+//       let responce=await apiMethod(userid)
+//
+//             if (responce.data.resultCode === 0) {
+//                 dispatch(acCreator(userid))
+//             }
+//             dispatch(toggleFollowingProgress(false, userid))
+// }
 
 
 let initState = {
@@ -67,6 +94,21 @@ let initState = {
 
 }
 
+
+let caseFollowUnfollow=(state,action,bool)=> {
+    return{
+        ...state,
+        users: state.users.map(user => {
+            if (user.id === action.userId) {
+                return {...user, followed: bool}
+            }
+
+            return user
+        })
+    }
+}
+
+
 export const UsersPageReduce = (state = initState, action) => {
     switch (action.type) {
 
@@ -76,30 +118,35 @@ export const UsersPageReduce = (state = initState, action) => {
                 fake:state.fake+1
             }
 
+        // case FOLLOW:
+        //     return {
+        //         ...state,
+        //         users: state.users.map(user => {
+        //             if (user.id === action.userId) {
+        //                 return {...user, followed: true}
+        //             }
+        //
+        //             return user
+        //         })
+        //     }
         case FOLLOW:
-            return {
-                ...state,
-                users: state.users.map(user => {
-                    if (user.id === action.userId) {
-                        return {...user, followed: true}
-                    }
-
-                    return user
-                })
-            }
+            return  caseFollowUnfollow(state,action,true)
 
         case UNFOLLOW:
-            return {
-                ...state,
-                users: state.users.map(user => {
-                    if (user.id === action.userId) {
-                        return {...user, followed: false}
-                    }
+            return  caseFollowUnfollow(state,action,false)
 
-                    return user
-                })
-
-            }
+        // case UNFOLLOW:
+        //     return {
+        //         ...state,
+        //         users: state.users.map(user => {
+        //             if (user.id === action.userId) {
+        //                 return {...user, followed: false}
+        //             }
+        //
+        //             return user
+        //         })
+        //
+        //     }
 
         case SETUSERS:
             return {...state, users: action.users}

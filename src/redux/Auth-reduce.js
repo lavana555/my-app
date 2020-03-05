@@ -4,11 +4,14 @@ import {stopSubmit} from 'redux-form'
 const SET_USER_DATA = 'SET_USER_DATA';
 const UNFOLLOW = 'UNFOLLOW';
 const SETUSERPROFILE = 'SETUSERPROFILE'
-const LOGINUSER='LOGINUSER'
+const LOGINUSER = 'LOGINUSER'
 
-export const setAuthUserData = (id, email, login,isAuth) => ({type: SET_USER_DATA, payload: {id, email, login,isAuth}})
+export const setAuthUserData = (id, email, login, isAuth) => ({
+    type: SET_USER_DATA,
+    payload: {id, email, login, isAuth}
+})
 export const setUserProfileHeader = (photo) => ({type: SETUSERPROFILE, photo})
-export const LoginUserAC=(email,password,rememberMe)=>({type:LOGINUSER,data:{email,password,rememberMe}})
+export const LoginUserAC = (email, password, rememberMe) => ({type: LOGINUSER, data: {email, password, rememberMe}})
 //export const unfollow = (userId) => ({type: UNFOLLOW, userId})
 //export const setusers = (users) => ({type: SETUSERS, users})
 //export const pageChange = (p) => ({type: PageChange, p})
@@ -16,57 +19,43 @@ export const LoginUserAC=(email,password,rememberMe)=>({type:LOGINUSER,data:{ema
 //export const setIsToggle = (isFetching) => ({type: TOGGLE_IS_FETCHING, isFetching})
 
 
-export const Auth = () => (dispatch)=>{
-    //debugger;
-    // return (dispatch) => {
-    return  UserAPI.Authfunc().then(data => {
-            if (data.resultCode === 0) {
-                let {id, email, login} = data.data
-                dispatch(setAuthUserData(id, email, login,true))
-
-            }
-        })
-
-    // }
-
+export const Auth = () => async (dispatch) => {
+    let data = await UserAPI.Authfunc()
+    // return  UserAPI.Authfunc().then(data => {
+    if (data.resultCode === 0) {
+        let {id, email, login} = data.data
+        dispatch(setAuthUserData(id, email, login, true))
+    }
+    //})
 }
 
 
-export const LoginThunk=(email,password,rememberMe)=>{
-   // debugger;
-    return(dispatch)=>{
-        // return
+export const LoginThunk = (email, password, rememberMe) => async (dispatch) => {
 
-        UserAPI.LoginUsers(email,password,rememberMe).then(res=>{
-            if (res.data.resultCode===0){
+    // return (dispatch) => {
+let res=await  UserAPI.LoginUsers(email, password, rememberMe)
 
+            if (res.data.resultCode === 0) {
                 dispatch(Auth())
-            }else {
+            } else {
                 debugger;
                 console.log(res)
-                let message=res.data.messages.length>0?res.data.messages[0]:'some error'
-                dispatch(stopSubmit('login',{_error:message}))
+                let message = res.data.messages.length > 0 ? res.data.messages[0] : 'some error'
+                dispatch(stopSubmit('login', {_error: message}))
             }
 
-        })
-    }
 }
 
 
-export const LogOutThnuk=()=>{
+export const LogOutThnuk = () =>async (dispatch)=>{
 
-    return(dispatch)=>{
-        UserAPI.LogOut().then(res=>{
-            if (res.data.resultCode===0){
-                dispatch(setAuthUserData(null, null, null,false))
+
+    let res=await UserAPI.LogOut()
+
+            if (res.data.resultCode === 0) {
+                dispatch(setAuthUserData(null, null, null, false))
             }
-
-        })
-    }
 }
-
-
-
 
 
 let initState = {
