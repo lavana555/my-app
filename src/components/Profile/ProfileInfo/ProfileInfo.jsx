@@ -7,7 +7,7 @@ import ProfileinfoStatusWithHook from "./ProfileinfoStatusWithHook";
 
 
 const ProfileInfo = (props) => {
-    debugger
+   // debugger
     console.log(props)
     if (!props.profile) {
         return <Preloader/>
